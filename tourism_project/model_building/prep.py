@@ -1,5 +1,5 @@
 
-from google.colab import userdata
+
 # for data manipulation
 import pandas as pd
 import sklearn
@@ -10,9 +10,20 @@ from sklearn.model_selection import train_test_split
 # for hugging face space authentication to upload files
 from huggingface_hub import login, HfApi
 
+try:
+    from google.colab import userdata
+except ModuleNotFoundError:
+    userdata = None
+
 # Define constants for the dataset and output paths
 user_id = "puneet83"
-api = HfApi(token=userdata.get('HF_TOKEN'))
+if userdata:
+    token = userdata.get("HF_TOKEN")
+else:
+    token = os.environ["HF_TOKEN"]
+# Initialize API client
+api = HfApi(token=token)
+# api = HfApi(token=userdata.get('HF_TOKEN'))
 DATASET_PATH = f"hf://datasets/{user_id}/tourism_product/tourism.csv"
 tourism_dataset = pd.read_csv(DATASET_PATH)
 print("Dataset loaded successfully.")
