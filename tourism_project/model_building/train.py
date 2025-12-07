@@ -24,7 +24,7 @@ from google.colab import userdata
 import json
 
 # Set your auth token here (replace with your actual token)
-ngrok.set_auth_token(userdata.get('ngrok_token'))
+# ngrok.set_auth_token(userdata.get('ngrok_token'))
 
 # Start MLflow UI on port 5000
 process = subprocess.Popen(["mlflow", "ui", "--port", "5000"])
