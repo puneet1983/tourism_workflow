@@ -27,7 +27,7 @@ import json
 # ngrok.set_auth_token(userdata.get('ngrok_token'))
 
 # Start MLflow UI on port 5000
-process = subprocess.Popen(["mlflow", "ui", "--port", "5000"])
+process = subprocess.Popen(["mlflow", "ui", "--port", "5001"])
 
 # mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment("tourism-training-final-experiment")
