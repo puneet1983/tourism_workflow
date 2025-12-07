@@ -20,7 +20,7 @@ import mlflow
 # from pyngrok import ngrok
 import subprocess
 import mlflow
-from google.colab import userdata
+# from google.colab import userdata
 import json
 
 # Set your auth token here (replace with your actual token)
