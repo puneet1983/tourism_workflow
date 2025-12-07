@@ -1,15 +1,26 @@
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
-from google.colab import userdata
+# from google.colab import userdata
+
+try:
+    from google.colab import userdata
+except ModuleNotFoundError:
+    userdata = None
 
 user_id = "puneet83"
 # user_id ="<-----Hugging Face User ID ----->"
 repo_id = f"{user_id}/tourism_product"
 repo_type = "dataset"
 
+
+if userdata:
+    token = userdata.get("HF_TOKEN")
+else:
+    token = os.environ["HF_TOKEN"]
 # Initialize API client
-api = HfApi(token=userdata.get('HF_TOKEN'))
+api = HfApi(token=token)
+
 
 # Step 1: Check if the space exists
 try:
